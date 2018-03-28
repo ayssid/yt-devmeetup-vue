@@ -38,8 +38,8 @@ export default {
         {icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
         {icon: 'room', title: 'Organize Meetup', link: '/meetup/new'},
         {icon: 'person', title: 'Profile', link: '/profile'},
-        {icon: 'face', title: 'Sign Up', link: '/signin'},
-        {icon: 'lock_open', title: 'Sign In', link: '/signup'}
+        {icon: 'face', title: 'Sign Up', link: '/signup'},
+        {icon: 'lock_open', title: 'Sign In', link: '/signin'}
       ]
     }
   },
