@@ -114,6 +114,7 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn class="primary" :disabled="!formIsValid" type="submit">Create Meetup</v-btn>
+              {{ submittableDateTime }}
             </v-flex>
           </v-layout>
         </form>
@@ -139,6 +140,18 @@ export default {
   computed: {
     formIsValid () {
       return this.title !== '' && this.location !== '' && this.imageUrl !== '' && this.description !== ''
+    },
+    submittableDateTime () {
+      const date = new Date(this.date)
+      if (this.time) {
+        const splitTime = this.time.split(':')
+        date.setHours(parseInt(splitTime[0]))
+        date.setMinutes(splitTime[1])
+        console.log(this.time ? splitTime : 'null')
+      }
+      console.log(date.toLocaleString())
+     // console.log(typeof date)
+      return date
     }
   },
   methods: {
@@ -151,7 +164,7 @@ export default {
         location: this.location,
         imageUrl: this.imageUrl,
         description: this.description,
-        date: new Date()
+        date: this.submittableDateTime
       }
       this.$store.dispatch('createMeetup', meetupData)
       this.$router.push('/meetups')
